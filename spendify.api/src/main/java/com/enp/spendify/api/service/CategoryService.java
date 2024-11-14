@@ -1,5 +1,20 @@
 package com.enp.spendify.api.service;
 
+/*
+ * @(#)CategoryService.java 1.0 13/11/2024
+ * 
+ * El código implementado en este formulario esta protegido
+ * bajo las leyes internacionales del Derecho de Autor, sin embargo
+ * se entrega bajo las condiciones de la General Public License (GNU GPLv3)
+ * descrita en https://www.gnu.org/licenses/gpl-3.0.html
+ */
+
+/**
+ * @author eliezer.navarro
+ * @version 1.0
+ * @since 1.0
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -7,8 +22,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.enp.blabber.api.dto.LikeDto;
-import com.enp.blabber.api.model.Like;
 import com.enp.spendify.api.dto.BudgetDto;
 import com.enp.spendify.api.dto.CategoryDto;
 import com.enp.spendify.api.model.Budget;
@@ -17,13 +30,6 @@ import com.enp.spendify.api.repository.CategoryRepository;
 
 @Service
 public class CategoryService {
-	
-	/*
-	private Long id;
-    private String name;
-    private String description;
-    private List<ExpenseDto> expenses;
-    */
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -36,7 +42,7 @@ public class CategoryService {
 		category.setId(categoryDto.getId());
 		category.setName(categoryDto.getName());
 		category.setDescription(categoryDto.getDescription());
-		category.setExpenses(categoryDto.getExpenses());
+		//category.setExpenses(categoryDto.getExpenses());
 		
 		return category;
 	}
@@ -46,7 +52,7 @@ public class CategoryService {
 		categoryDto.setId(optional.get().getId());
 		categoryDto.setName(optional.get().getName());
 		categoryDto.setDescription(optional.get().getDescription());
-		categoryDto.setExpenses(optional.get().getExpenses());
+		//categoryDto.setExpenses(optional.get().getExpenses());
 		
 		return categoryDto;
 	}
@@ -56,7 +62,7 @@ public class CategoryService {
 		categoryDto.setId(category.getId());
 		categoryDto.setName(category.getName());
 		categoryDto.setDescription(category.getDescription());
-		categoryDto.setExpenses(category.getExpenses());
+		//categoryDto.setExpenses(category.getExpenses());
 		
 		return categoryDto;
 	}
@@ -67,16 +73,6 @@ public class CategoryService {
 		
 		for(CategoryDto categoryDto : categoryListaDto){
 			categoryListas.add(buildDtoFromCategory(category));
-		}
-
-		return categoryListaDto;
-	}
-	
-	public List<ExpenseDto> getCategoryListDto(List<Expense> categoryLista){
-		List<ExpenseDto> expenseListaDto = new ArrayList<ExpenseDto>();
-		
-		for(Category category : categoryLista){
-			categoryListaDto.add(buildDtoFromCategory(category));
 		}
 
 		return categoryListaDto;
