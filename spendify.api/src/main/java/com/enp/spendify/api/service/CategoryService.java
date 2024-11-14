@@ -15,16 +15,12 @@ package com.enp.spendify.api.service;
  * @since 1.0
  */
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.enp.spendify.api.dto.BudgetDto;
 import com.enp.spendify.api.dto.CategoryDto;
-import com.enp.spendify.api.model.Budget;
 import com.enp.spendify.api.model.Category;
 import com.enp.spendify.api.repository.CategoryRepository;
 
