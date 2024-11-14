@@ -92,5 +92,9 @@ public class ExpenseService {
 		
 		return listaDto;
 	}
+
+	public ExpenseDto createExpense(ExpenseDto expenseDto) {
+		return buildDto(Optional.of(expenseRepository.save(buildEntity(expenseDto))));
+	}
 	
 }
