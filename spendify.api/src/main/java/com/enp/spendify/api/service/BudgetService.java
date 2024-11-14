@@ -1,27 +1,31 @@
 package com.enp.spendify.api.service;
 
+/*
+ * @(#)BudgetService.java 1.0 13/11/2024
+ * 
+ * El código implementado en este formulario esta protegido
+ * bajo las leyes internacionales del Derecho de Autor, sin embargo
+ * se entrega bajo las condiciones de la General Public License (GNU GPLv3)
+ * descrita en https://www.gnu.org/licenses/gpl-3.0.html
+ */
+
+/**
+ * @author eliezer.navarro
+ * @version 1.0
+ * @since 1.0
+ */
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.enp.spendify.api.dto.BudgetDto;
-import com.enp.spendify.api.dto.CategoryDto;
 import com.enp.spendify.api.model.Budget;
-import com.enp.spendify.api.model.Category;
 import com.enp.spendify.api.repository.BudgetRepository;
 
 @Service
 public class BudgetService {
-	
-	/*
-	 *	private Long id;
-    private BigDecimal totalAmount;
-    private BigDecimal amountSpent;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private UserDto user;
-	 */
 	
 	@Autowired
 	private BudgetRepository budgetRepository;
