@@ -29,42 +29,39 @@ public class CategoryService {
 	private CategoryRepository categoryRepository;
 	
 	@Autowired
-	private UserService userService;
+	private ExpenseService expenseService;
 	
 	public Category buildEntity(CategoryDto categoryDto) {
 		Category category = new Category();
 		category.setId(categoryDto.getId());
 		category.setName(categoryDto.getName());
 		category.setDescription(categoryDto.getDescription());
-		category.setExpenses(getCategoryListDto(categoryDto.getExpenses()));
+		category.setExpenses(categoryDto.getExpenses());
 		
 		return category;
 	}
 	
-	public BudgetDto buildDto(Optional<Budget> optional) {
-		BudgetDto budgetDto = new BudgetDto();
-		budgetDto.setId(optional.get().getId());
-		budgetDto.setTotalAmount(optional.get().getTotalAmount());
-		budgetDto.setAmountSpent(optional.get().getAmountSpent());
-		budgetDto.setStartDate(optional.get().getStartDate());
-		budgetDto.setEndDate(optional.get().getEndDate());
-		budgetDto.setUser(userService.buildDtoFromUser(optional.get().getUser()));
+	public CategoryDto buildDto(Optional<Category> optional) {
+		CategoryDto categoryDto = new CategoryDto();
+		categoryDto.setId(optional.get().getId());
+		categoryDto.setName(optional.get().getName());
+		categoryDto.setDescription(optional.get().getDescription());
+		categoryDto.setExpenses(optional.get().getExpenses());
 		
-		return budgetDto;
+		return categoryDto;
 	}
 	
-	public BudgetDto buildDtoFromCategory(Budget budget) {
-		BudgetDto budgetDto = new BudgetDto();
-		budgetDto.setId(budget.getId());
-		budgetDto.setTotalAmount(budget.getTotalAmount());
-		budgetDto.setAmountSpent(budget.getAmountSpent());
-		budgetDto.setStartDate(budget.getStartDate());
-		budgetDto.setEndDate(budget.getEndDate());
-		budgetDto.setUser(userService.buildDtoFromUser(budget.getUser()));
+	public CategoryDto buildDtoFromCategory(Category category) {
+		CategoryDto categoryDto = new CategoryDto();
+		categoryDto.setId(category.getId());
+		categoryDto.setName(category.getName());
+		categoryDto.setDescription(category.getDescription());
+		categoryDto.setExpenses(category.getExpenses());
 		
-		return budgetDto;
+		return categoryDto;
 	}
 	
+	/*
 	public List<Category> getCategoryList(List<CategoryDto> categoryListaDto){
 		List<Category> categoryListas = new ArrayList<Category>();
 		
@@ -75,8 +72,8 @@ public class CategoryService {
 		return categoryListaDto;
 	}
 	
-	public List<CategoryDto> getCategoryListDto(List<Category> categoryLista){
-		List<CategoryDto> categoryListaDto = new ArrayList<CategoryDto>();
+	public List<ExpenseDto> getCategoryListDto(List<Expense> categoryLista){
+		List<ExpenseDto> expenseListaDto = new ArrayList<ExpenseDto>();
 		
 		for(Category category : categoryLista){
 			categoryListaDto.add(buildDtoFromCategory(category));
@@ -84,5 +81,5 @@ public class CategoryService {
 
 		return categoryListaDto;
 	}
-
+	*/
 }
