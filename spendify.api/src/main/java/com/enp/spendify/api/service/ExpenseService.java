@@ -1,8 +1,5 @@
 package com.enp.spendify.api.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /*
  * @(#)ExpenseService.java 1.0 13/11/2024
  * 
@@ -18,6 +15,8 @@ import java.util.List;
  * @since 1.0
  */
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
