@@ -63,4 +63,8 @@ public class CategoryService {
 		return categoryDto;
 	}
 
+	public CategoryDto createCategory(CategoryDto categoryDto) {
+		return buildDto(Optional.of(categoryRepository.save(buildEntity(categoryDto))));
+	}
+
 }
