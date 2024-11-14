@@ -1,5 +1,8 @@
 package com.enp.spendify.api.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * @(#)ExpenseService.java 1.0 13/11/2024
  * 
@@ -60,7 +63,7 @@ public class ExpenseService {
 		return expenseDto;
 	}
 	
-	public ExpenseDto buildDtoFromCategory(Expense expense) {
+	public ExpenseDto buildDtoFromExpense(Expense expense) {
 		ExpenseDto expenseDto = new ExpenseDto();
 		expenseDto.setId(expense.getId());
 		expenseDto.setDescription(expense.getDescription());
@@ -70,6 +73,24 @@ public class ExpenseService {
 		expenseDto.setCategory(categoryService.buildDtoFromCategory(expense.getCategory()));
 		
 		return expenseDto;
+	}
+	
+	public List<Expense> setListaFromListaDto(List<ExpenseDto> listaDto){
+		List<Expense> lista = new ArrayList<Expense>();
+		for(ExpenseDto expenseDto : listaDto){
+			lista.add(buildEntity(expenseDto));
+		}
+		
+		return lista;
+	}
+	
+	public List<ExpenseDto> setListaDtoFromLista(List<Expense> lista){
+		List<ExpenseDto> listaDto = new ArrayList<ExpenseDto>();
+		for(Expense expense : lista){
+			listaDto.add(buildDtoFromExpense(expense));
+		}
+		
+		return listaDto;
 	}
 	
 }
