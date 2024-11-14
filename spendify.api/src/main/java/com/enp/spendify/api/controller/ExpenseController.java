@@ -1,10 +1,14 @@
 package com.enp.spendify.api.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +37,22 @@ public class ExpenseController {
 			}
 			return new ResponseDetails<ExpenseDto>("OK",new Date(),new ResponseEntity<ExpenseDto>(savedExpenseDto, HttpStatus.OK));
 		}catch(Exception e){
+			ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.INTERNAL_SERVER_ERROR.toString(),e.getMessage());
+			return new ResponseDetails<ErrorDetails>("ERROR",new Date(),new ResponseEntity<ErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR));
+		}
+	}
+	
+	@GetMapping("/find-by-user/{userid}")
+	public ResponseDetails<?> getExpensesFromUser(@PathVariable Long userid){
+		List<ExpenseDto> listaExpenseDto = new ArrayList<ExpenseDto>();
+		try {
+			expenseService.fidnAllExpensesByUserId(userid).forEach(listaExpenseDto::add);
+			if(listaExpenseDto.isEmpty()) {
+				ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.NOT_FOUND.toString(),"No expenses associated with the user were found.");
+				return new ResponseDetails<String>("ERROR",new Date(),new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND));
+			}
+			return new ResponseDetails<List<ExpenseDto>>("OK",new Date(),new ResponseEntity<List<ExpenseDto>>(listaExpenseDto, HttpStatus.OK));
+		}catch(Exception e) {
 			ErrorDetails err = new ErrorDetails(new Date(),HttpStatus.INTERNAL_SERVER_ERROR.toString(),e.getMessage());
 			return new ResponseDetails<ErrorDetails>("ERROR",new Date(),new ResponseEntity<ErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR));
 		}

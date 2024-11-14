@@ -96,5 +96,9 @@ public class ExpenseService {
 	public ExpenseDto createExpense(ExpenseDto expenseDto) {
 		return buildDto(Optional.of(expenseRepository.save(buildEntity(expenseDto))));
 	}
+
+	public List<ExpenseDto> fidnAllExpensesByUserId(Long userid) {
+		return setListaDtoFromLista(expenseRepository.fidnAllExpensesByUserId(userid));
+	}
 	
 }

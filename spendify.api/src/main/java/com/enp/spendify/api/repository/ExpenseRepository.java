@@ -1,5 +1,7 @@
 package com.enp.spendify.api.repository;
 
+import java.util.List;
+
 /*
  * @(#)ExpenseRepository.java 1.0 13/11/2024
  * 
@@ -16,11 +18,15 @@ package com.enp.spendify.api.repository;
  */
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.enp.spendify.api.model.Expense;
 
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense,Long> {
+	
+	@Query(value = "SELECT a.* FROM expense a WHERE a.user_id = :userid", nativeQuery = true)
+	List<Expense> fidnAllExpensesByUserId(Long userid);
 
 }
