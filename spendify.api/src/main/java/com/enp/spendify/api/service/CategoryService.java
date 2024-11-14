@@ -30,8 +30,8 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@Autowired
-	private ExpenseService expenseService;
+	//@Autowired
+	//private ExpenseService expenseService;
 	
 	public Category buildEntity(CategoryDto categoryDto) {
 		Category category = new Category();
