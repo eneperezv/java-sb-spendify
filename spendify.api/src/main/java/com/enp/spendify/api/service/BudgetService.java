@@ -69,4 +69,8 @@ public class BudgetService {
 		return budgetDto;
 	}
 
+	public BudgetDto createCategory(BudgetDto budgetDto) {
+		return buildDto(Optional.of(budgetRepository.save(buildEntity(budgetDto))));
+	}
+
 }
