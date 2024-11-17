@@ -63,6 +63,11 @@ public class WebSecurityConfig {
                     registry.requestMatchers(HttpMethod.GET,  "/api/v1/spendify/users/**").hasRole("USER");
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/spendify/users/register").hasRole("USER");
                     registry.requestMatchers(HttpMethod.PUT,  "/api/v1/spendify/users/**").hasRole("USER");
+                    //CATEGORY
+                    registry.requestMatchers(HttpMethod.POST, "/api/v1/spendify/category/create").hasRole("USER");
+                    //EXPENSE
+                    registry.requestMatchers(HttpMethod.POST, "/api/v1/spendify/expense/create").hasRole("USER");
+                    registry.requestMatchers(HttpMethod.GET,  "/api/v1/spendify/expense/find-by-user/**").hasRole("USER");
                     /*
                     //CLIENT
                     registry.requestMatchers(HttpMethod.POST, "/api/v1/reservite/client").hasRole("USER");

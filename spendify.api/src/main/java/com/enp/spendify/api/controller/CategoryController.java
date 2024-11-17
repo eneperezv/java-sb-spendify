@@ -37,7 +37,7 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
-	@PostMapping
+	@PostMapping("/create")
 	public ResponseDetails<?> createCategory(@RequestBody CategoryDto categoryDto){
 		CategoryDto savedCategoryDto;
 		try{
