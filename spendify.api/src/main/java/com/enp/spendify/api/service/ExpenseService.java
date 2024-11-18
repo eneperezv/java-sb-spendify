@@ -35,8 +35,8 @@ public class ExpenseService {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private CategoryService categoryService;
+	//@Autowired
+	//private CategoryService categoryService;
 	
 	public Expense buildEntity(ExpenseDto expenseDto) {
 		Expense expense = new Expense();
@@ -45,7 +45,7 @@ public class ExpenseService {
 		expense.setAmount(expenseDto.getAmount());
 		expense.setDate(expenseDto.getDate());
 		expense.setUser(userService.buildEntity(expenseDto.getUser()));
-		expense.setCategory(categoryService.buildEntity(expenseDto.getCategory()));
+		//expense.setCategory(categoryService.buildEntity(expenseDto.getCategory()));
 		
 		return expense;
 	}
@@ -57,7 +57,7 @@ public class ExpenseService {
 		expenseDto.setAmount(optional.get().getAmount());
 		expenseDto.setDate(optional.get().getDate());
 		expenseDto.setUser(userService.buildDtoFromUser(optional.get().getUser()));
-		expenseDto.setCategory(categoryService.buildDtoFromCategory(optional.get().getCategory()));
+		//expenseDto.setCategory(categoryService.buildDtoFromCategory(optional.get().getCategory()));
 		
 		return expenseDto;
 	}
@@ -69,7 +69,7 @@ public class ExpenseService {
 		expenseDto.setAmount(expense.getAmount());
 		expenseDto.setDate(expense.getDate());
 		expenseDto.setUser(userService.buildDtoFromUser(expense.getUser()));
-		expenseDto.setCategory(categoryService.buildDtoFromCategory(expense.getCategory()));
+		//expenseDto.setCategory(categoryService.buildDtoFromCategory(expense.getCategory()));
 		
 		return expenseDto;
 	}

@@ -30,15 +30,15 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@Autowired
-	private ExpenseService expenseService;
+	//@Autowired
+	//private ExpenseService expenseService;
 	
 	public Category buildEntity(CategoryDto categoryDto) {
 		Category category = new Category();
 		category.setId(categoryDto.getId());
 		category.setName(categoryDto.getName());
 		category.setDescription(categoryDto.getDescription());
-		category.setExpenses(expenseService.setListaFromListaDto(categoryDto.getExpenses()));
+		//category.setExpenses(expenseService.setListaFromListaDto(categoryDto.getExpenses()));
 		
 		return category;
 	}
@@ -48,7 +48,7 @@ public class CategoryService {
 		categoryDto.setId(optional.get().getId());
 		categoryDto.setName(optional.get().getName());
 		categoryDto.setDescription(optional.get().getDescription());
-		categoryDto.setExpenses(expenseService.setListaDtoFromLista(optional.get().getExpenses()));
+		//categoryDto.setExpenses(expenseService.setListaDtoFromLista(optional.get().getExpenses()));
 		
 		return categoryDto;
 	}
@@ -58,7 +58,7 @@ public class CategoryService {
 		categoryDto.setId(category.getId());
 		categoryDto.setName(category.getName());
 		categoryDto.setDescription(category.getDescription());
-		categoryDto.setExpenses(expenseService.setListaDtoFromLista(category.getExpenses()));
+		//categoryDto.setExpenses(expenseService.setListaDtoFromLista(category.getExpenses()));
 		
 		return categoryDto;
 	}
